@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+    <h2>Student List</h2>
+    <a th:href="@{/alunos/form}" class="btn btn-success btn-sm mb-3">Add Student</a>
+    <a th:href="@{/alunos/home}" class="btn btn-warning btn-sm mb-3">Home</a>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead class="thead-dark">
+        <tr align="center">
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Matrícula</th>
+            <th>Opções</th>
+        </tr>
+        </thead>
+        <tr th:each="p : ${alunos}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.nome}"></td>
+            <td th:text="${p.matricula}"></td>
+            <td align="center"><a th:href="@{/alunos/edit/{id}(id=${p.id})}" class="btn btn-primary">Editar</a>
+
+            <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
+                   th:href="@{/alunos/remove/{id}(id=${p.id})}"  class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

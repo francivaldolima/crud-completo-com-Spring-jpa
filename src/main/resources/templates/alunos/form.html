@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <h1>Student Management System</h1>
+    <hr>
+    <h2>FORM</h2>
+    <form th:action="${aluno.id == null} ? @{/alunos/save} : @{/alunos/update}" th:object="${aluno}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{nome}"  placeholder="Nome" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{matricula}"  placeholder="Matricula" class="form-control mb-4 col-4">
+        <!--<input type="submit" value="Enviar" class="btn btn-primary btn-sm mb-3"><br>-->
+         <button type="submit" class="btn btn-info col-2">Save Student</button>
+    </form>
+     <br>
+    <a th:href="@{/alunos/home}">Back to Home</a>
+    <!--
+    <a class="h3" th:href="@{/alunos/home}" style="margin-right:15px">Home</a>
+    <a class="h3" th:href="@{/alunos/list}">Listar</a>-->
+</div>
+</body>
+</html>
